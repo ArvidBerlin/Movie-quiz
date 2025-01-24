@@ -52,6 +52,11 @@ const Quiz = () => {
         setTimeLeft(10);
     };
 
+    const goToStartPage = () => {
+        resetQuiz();
+        setHasStarted(false);
+    }
+
     // If quiz hasn't started, show start page until user starts quiz
     if (!hasStarted) {
         return <StartPage onStart={() => setHasStarted(true)}/>;
@@ -64,7 +69,7 @@ const Quiz = () => {
                 score={score} 
                 total={questions.length} 
                 onRestart={resetQuiz} 
-                onGoToStart={() => setHasStarted(false)}
+                onGoToStart={goToStartPage}
             />
         );
     }
