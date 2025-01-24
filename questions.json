@@ -1,0 +1,52 @@
+[
+    {
+        "question": "Which movie features the line, \"I drink your milkshake\"?",
+        "options": ["There Will Be Blood", "The Godfather", "No Country For Old Men", "The Departed"],
+        "answer": "There Will Be Blood"
+    },
+    {
+        "question": "In Blade Runner (1982), what is the term used for human-like androids?",
+        "options": ["Simulants", "Replicants", "Automata", "Synths"],
+        "answer": "Replicants"
+    },
+    {
+        "question": "Who was the first woman to win the Academy Award for Best Director?",
+        "options": ["Sofia Coppola", "Jane Campion", "Kathryn Bigelow", "Greta Gerwig"],
+        "answer": "Kathryn Bigelow"
+    },
+    {
+        "question": "What was the original title of the 1995 movie Se7en during its development?",
+        "options": ["The Seven Deadly Sins", "The List", "Justice is Blind", "Seven"],
+        "answer": "The Seven Deadly Sins"
+    },
+    {
+        "question": "In The Shining, what is the name of the hotel where the story takes place?",
+        "options": ["The Overlook Hotel", "The Timberline Lodge", "The Stanley Hotel", "The Bates Motel"],
+        "answer": "The Overlook Hotel"
+    },
+    {
+        "question": "What is the name of the skyscraper in Die Hard?",
+        "options": ["Shard Tower", "Nakatomi Plaza", "Stark Tower", "Nagasaki Tower"],
+        "answer": "Nakatomi Plaza"
+    },
+    {
+        "question": "In Back to the Future, what is the exact speed the DeLorean must reach to time travel?",
+        "options": ["80 mph", "85 mph", "88 mph", "90 mph"],
+        "answer": "88 mph"
+    },
+    {
+        "question": "Which actress starred as Katniss Everdeen in The Hunger Games series?",
+        "options": ["Emma Stone", "Jennifer Lawrence", "Scarlett Johansson", "Kristen Stewart"],
+        "answer": "Jennifer Lawrence"
+    },
+    {
+        "question": "What was the first feature-length animated film ever released?",
+        "options": ["Cinderella", "Fantasia", "Pinocchio", "Snow White and the Seven Dwarfs"],
+        "answer": "Snow White and the Seven Dwarfs"
+    },
+    {
+        "question": "In Jurassic Park, what kind of dinosaur is the first to fully appear on screen?",
+        "options": ["Velociraptor", "Brachiosaurus", "T-Rex", "Triceratops"],
+        "answer": "Brachiosaurus"
+    }
+]
