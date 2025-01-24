@@ -10,6 +10,7 @@ const Quiz = () => {
     const [isFinished, setIsFinished] = useState(false);
     const [timeLeft, setTimeLeft] = useState(10);
     const [hasStarted, setHasStarted] = useState(false);
+    const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
 
     // Load questions from JSON
     useEffect(() => {
@@ -20,25 +21,29 @@ const Quiz = () => {
 
     // Timer for each question
     useEffect(() => {
-        if (timeLeft > 0 && !isFinished && hasStarted) {
-            const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000);
+        if (timeLeft > 0 && !isFinished) {
+            const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
             return () => clearTimeout(timer);
-        } else if (timeLeft === 0 && !isFinished) {
-            nextQuestion();
+        } else if (timeLeft === 0) {
+            handleTimeout();
         }
-    }, [timeLeft, hasStarted]);
+    }, [timeLeft, isFinished]);
 
-    // Add point if answer is correct
-    const handleAnswer = (isCorrect) => {
+    const handleTimeout = () => {
+        setShowCorrectAnswer(true);
+        setTimeout(() => {
+            setShowCorrectAnswer(false);
+            nextQuestion(false);
+        }, 1500)
+    }
+
+    // Add point and move to next question after answer, or finish quiz
+    const nextQuestion = (isCorrect) => {
         if (isCorrect) setScore(score + 1);
-        nextQuestion();
-    };
 
-    // Move to next question after answer, or finish quiz
-    const nextQuestion = () => {
-        setTimeLeft(10);
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setTimeLeft(10);
         } else {
             setIsFinished(true);
         }
@@ -75,16 +80,23 @@ const Quiz = () => {
     }
 
     // Load questions
-    return questions.length > 0 ? (
-        <div>
-            <Question 
-                question={questions[currentQuestionIndex]}
-                onAnswer={handleAnswer}
-                timeLeft={timeLeft}
-            />
-        </div>
-    ) : (
-        <p>Loading questions...</p>
+    return (
+        <>
+            {hasStarted && !isFinished && (
+                <Question
+                    question={questions[currentQuestionIndex]}
+                    onAnswer={(isCorrect) => {
+                        setShowCorrectAnswer(true);
+                        setTimeout(() => {
+                            setShowCorrectAnswer(false);
+                            nextQuestion(isCorrect);
+                        }, 1500);
+                    }}
+                    timeLeft={timeLeft}
+                    showCorrectAnswer={showCorrectAnswer}
+                />
+            )}
+        </>
     );
 };
 

@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 
-const Question = ({ question, onAnswer, timeLeft }) => {
+const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer }) => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     // If question is answered, show correct answer
     const handleClick = (option) => {
-        setSelectedOption(option);
         const isCorrect = option === question.answer;
-
-        // Wait 1.5 seconds until next question
-        setTimeout(() => {
-            setSelectedOption(null)
-            onAnswer(isCorrect);
-        }, 1500);
+        setSelectedOption(option);
+        onAnswer(isCorrect);
     };
 
-    // Show question and answer options, along with timer
+    // Show question and answer options, along with correct/incorrect answer feeback and timer
     return (
         <div className="quiz-container">
             <h2>{question.question}</h2>
@@ -24,7 +19,7 @@ const Question = ({ question, onAnswer, timeLeft }) => {
                     key={index} 
                     onClick={() => handleClick(option)}
                     className={
-                        selectedOption 
+                        showCorrectAnswer 
                         ? option === question.answer
                             ? "correct"
                             : selectedOption === option 
@@ -32,6 +27,7 @@ const Question = ({ question, onAnswer, timeLeft }) => {
                         : "" 
                         : ""
                     }
+                    disabled={showCorrectAnswer} // Disable buttons after answer
                 >
                     {option}
                 </button>
