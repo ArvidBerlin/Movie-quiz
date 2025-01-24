@@ -43,7 +43,7 @@ const Quiz = () => {
 
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setTimeLeft(10);
+            setTimeLeft(15);
         } else {
             setIsFinished(true);
         }
@@ -54,7 +54,7 @@ const Quiz = () => {
         setScore(0);
         setCurrentQuestionIndex(0);
         setIsFinished(false);
-        setTimeLeft(10);
+        setTimeLeft(15);
     };
 
     const goToStartPage = () => {
