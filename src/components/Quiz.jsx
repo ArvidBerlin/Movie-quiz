@@ -21,13 +21,13 @@ const Quiz = () => {
 
     // Timer for each question
     useEffect(() => {
-        if (timeLeft > 0 && !isFinished) {
+        if (hasStarted && timeLeft > 0 && !isFinished) {
             const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
             return () => clearTimeout(timer);
-        } else if (timeLeft === 0) {
+        } else if (hasStarted && timeLeft === 0) {
             handleTimeout();
         }
-    }, [timeLeft, isFinished]);
+    }, [timeLeft, isFinished, hasStarted]);
 
     const handleTimeout = () => {
         setShowCorrectAnswer(true);
@@ -87,8 +87,11 @@ const Quiz = () => {
                 </div>
             )}
             
-            {!hasStarted && ( // If quiz hasn't started, show start page until user starts quiz
-                <StartPage onStart={() => setHasStarted(true)}/> 
+            {!hasStarted && ( // If quiz hasn't started, show start page until user starts quiz, then reset timer
+                <StartPage onStart={() => {
+                    setHasStarted(true);
+                    setTimeLeft(15)
+                }}/> 
             )}
             
             {isFinished && ( // If quiz is finished, show score and give option to restart
