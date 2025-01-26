@@ -62,7 +62,7 @@ const Quiz = () => {
     return (
         <>
             {hasStarted && !isFinished && (
-                <div className="quiz-container">
+                <div className="question-container">
                     <Question
                         question={questions[currentQuestionIndex]}
                         onAnswer={(isCorrect) => {
