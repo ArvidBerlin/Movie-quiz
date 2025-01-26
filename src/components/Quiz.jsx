@@ -58,6 +58,14 @@ const Quiz = () => {
         setHasStarted(false);
     }
 
+    // Restart and reset quiz
+    const restartQuiz = () => {
+        setScore(0);
+        setCurrentQuestionIndex(0);
+        setIsFinished(false);
+        setTimeLeft(15);
+    }
+
     // Load questions
     return (
         <>
@@ -87,7 +95,8 @@ const Quiz = () => {
                 <Result
                     score={score}
                     total={questions.length}
-                    onRestart={goToStartPage}
+                    onRestart={restartQuiz}
+                    onGoToStart={goToStartPage}
                 />
             )}
         </>
