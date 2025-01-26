@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer }) => {
+const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart }) => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     // If question is answered, show correct answer
@@ -33,6 +33,9 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer }) => {
                 </button>
             ))}
             <p>Time remaining: {timeLeft} seconds</p>
+            <button className="back-button" onClick={onGoToStart}>
+                Back to Start
+            </button>
         </div>
     );
 };

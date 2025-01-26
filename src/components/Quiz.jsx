@@ -39,8 +39,8 @@ const Quiz = () => {
 
     // Add point and move to next question after answer, or finish quiz
     const nextQuestion = (isCorrect) => {
-        if (isCorrect) setScore(score + 1);
-
+        if (isCorrect) 
+            setScore(score + 1);
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setTimeLeft(15);
@@ -49,51 +49,45 @@ const Quiz = () => {
         }
     };
 
-    // Reset quiz to start over
-    const resetQuiz = () => {
+    // Go back to start page and reset quiz
+    const goToStartPage = () => {
         setScore(0);
         setCurrentQuestionIndex(0);
         setIsFinished(false);
         setTimeLeft(15);
-    };
-
-    const goToStartPage = () => {
-        resetQuiz();
         setHasStarted(false);
-    }
-
-    // If quiz hasn't started, show start page until user starts quiz
-    if (!hasStarted) {
-        return <StartPage onStart={() => setHasStarted(true)}/>;
-    }
-
-    // If quiz is finished, show score and give option to restart
-    if (isFinished) {
-        return (
-            <Result 
-                score={score} 
-                total={questions.length} 
-                onRestart={resetQuiz} 
-                onGoToStart={goToStartPage}
-            />
-        );
     }
 
     // Load questions
     return (
         <>
             {hasStarted && !isFinished && (
-                <Question
-                    question={questions[currentQuestionIndex]}
-                    onAnswer={(isCorrect) => {
-                        setShowCorrectAnswer(true);
-                        setTimeout(() => {
-                            setShowCorrectAnswer(false);
-                            nextQuestion(isCorrect);
-                        }, 1500);
-                    }}
-                    timeLeft={timeLeft}
-                    showCorrectAnswer={showCorrectAnswer}
+                <div className="quiz-container">
+                    <Question
+                        question={questions[currentQuestionIndex]}
+                        onAnswer={(isCorrect) => {
+                            setShowCorrectAnswer(true);
+                            setTimeout(() => {
+                                setShowCorrectAnswer(false);
+                                nextQuestion(isCorrect);
+                            }, 1500);
+                        }}
+                        timeLeft={timeLeft}
+                        showCorrectAnswer={showCorrectAnswer}
+                        onGoToStart={goToStartPage}
+                    />
+                </div>
+            )}
+            
+            {!hasStarted && ( // If quiz hasn't started, show start page until user starts quiz
+                <StartPage onStart={() => setHasStarted(true)}/> 
+            )}
+            
+            {isFinished && ( // If quiz is finished, show score and give option to restart
+                <Result
+                    score={score}
+                    total={questions.length}
+                    onRestart={goToStartPage}
                 />
             )}
         </>
