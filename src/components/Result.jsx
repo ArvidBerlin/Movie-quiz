@@ -4,7 +4,7 @@ import React from "react";
 const Result = ({ score, total, onRestart, onGoToStart }) => {
     return (
         <div className="result-page">
-            <h2>Quiz finished!</h2>
+            <h1>Quiz finished!</h1>
             <p>
                 You got {score} of {total} correct!
             </p>

@@ -88,6 +88,10 @@ h1 {
   text-align: center;
 }
 
+.result-page {
+  padding: 0px 50px;
+}
+
 .start-page button,
 .result-page button {
   gap: 15px;
