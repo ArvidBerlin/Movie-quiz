@@ -83,6 +83,16 @@ h1 {
   background-color: #0056b3;
 }
 
+.time-green {
+  color: green;
+  font-weight: bold;
+}
+
+.time-red {
+  color: red;
+  font-weight: bold;
+}
+
 .start-page,
 .result-page {
   text-align: center;

@@ -32,7 +32,9 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
                     {option}
                 </button>
             ))}
-            <p>Time remaining: {timeLeft} seconds</p>
+            <p>
+                Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
+                </p>
             <button className="back-button" onClick={onGoToStart}>
                 Back to Start
             </button>
