@@ -12,7 +12,7 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
 
     // Show question and answer options, along with correct/incorrect answer feeback and timer
     return (
-        <div className="quiz-container">
+        <>
             <h2>{question.question}</h2>
             {question.options.map((option, index) => (
                 <button 
@@ -36,7 +36,7 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
             <button className="back-button" onClick={onGoToStart}>
                 Back to Start
             </button>
-        </div>
+        </>
     );
 };
 

@@ -68,30 +68,28 @@ const Quiz = () => {
 
     // Load questions
     return (
-        <>
-            {hasStarted && !isFinished && (
-                <div className="question-container">
-                    <Question
-                        question={questions[currentQuestionIndex]}
-                        onAnswer={(isCorrect) => {
-                            setShowCorrectAnswer(true);
-                            setTimeout(() => {
-                                setShowCorrectAnswer(false);
-                                nextQuestion(isCorrect);
-                            }, 1500);
-                        }}
-                        timeLeft={timeLeft}
-                        showCorrectAnswer={showCorrectAnswer}
-                        onGoToStart={goToStartPage}
-                    />
-                </div>
-            )}
-            
-            {!hasStarted && ( // If quiz hasn't started, show start page until user starts quiz, then reset timer
+        <div className="quiz-container">
+                {!hasStarted && ( // If quiz hasn't started, show start page until user starts quiz, then reset timer
                 <StartPage onStart={() => {
                     setHasStarted(true);
                     setTimeLeft(15)
                 }}/> 
+            )}
+
+            {hasStarted && !isFinished && (
+                <Question
+                    question={questions[currentQuestionIndex]}
+                    onAnswer={(isCorrect) => {
+                        setShowCorrectAnswer(true);
+                        setTimeout(() => {
+                            setShowCorrectAnswer(false);
+                            nextQuestion(isCorrect);
+                        }, 1500);
+                    }}
+                    timeLeft={timeLeft}
+                    showCorrectAnswer={showCorrectAnswer}
+                    onGoToStart={goToStartPage}
+                />
             )}
             
             {isFinished && ( // If quiz is finished, show score and give option to restart
@@ -102,7 +100,7 @@ const Quiz = () => {
                     onGoToStart={goToStartPage}
                 />
             )}
-        </>
+        </div>
     );
 };
 
