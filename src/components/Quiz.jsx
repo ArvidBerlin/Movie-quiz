@@ -69,13 +69,15 @@ const Quiz = () => {
     // Load questions
     return (
         <div className="quiz-container">
-                {!hasStarted && ( // If quiz hasn't started, show start page until user starts quiz, then reset timer
+            {/* If quiz hasn't started, show start page until user starts quiz, then reset timer */}
+            {!hasStarted && ( 
                 <StartPage onStart={() => {
                     setHasStarted(true);
                     setTimeLeft(15)
                 }}/> 
             )}
 
+            {/* If quiz has started, display questions and save answer */}
             {hasStarted && !isFinished && (
                 <Question
                     question={questions[currentQuestionIndex]}
@@ -89,10 +91,13 @@ const Quiz = () => {
                     timeLeft={timeLeft}
                     showCorrectAnswer={showCorrectAnswer}
                     onGoToStart={goToStartPage}
+                    currentQuestion={currentQuestionIndex + 1}
+                    totalQuestions={questions.length}
                 />
             )}
             
-            {isFinished && ( // If quiz is finished, show score and give option to restart
+            {/* If quiz is finished, show score and give option to restart */}
+            {isFinished && ( 
                 <Result
                     score={score}
                     total={questions.length}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart }) => {
+const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart, currentQuestion, totalQuestions }) => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     // If question is answered, show correct answer
@@ -10,10 +10,12 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
         onAnswer(isCorrect);
     };
 
-    // Show question and answer options, along with correct/incorrect answer feeback and timer
     return (
+        // Show question and answer options
         <div className="question-page">
-            <h2>{question.question}</h2>
+            <h2>{question.question}</h2> 
+            
+            {/* Correct/incorrect answer feedback */}
             {question.options.map((option, index) => (
                 <button 
                     key={index} 
@@ -32,6 +34,13 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
                     {option}
                 </button>
             ))}
+
+            {/* Display current question number and total question number */}
+            <p className="question-tracker"> 
+                Question {currentQuestion} out of {totalQuestions} 
+            </p>
+
+            {/* Display timer */}
             <p>
                 Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
                 </p>
