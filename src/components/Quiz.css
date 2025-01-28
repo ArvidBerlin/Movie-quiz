@@ -124,3 +124,15 @@ button {
 .result-page button:hover {
   background-color: #45a049;
 }
+
+.start-page button {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px; 
+  filter: invert(1);
+}
