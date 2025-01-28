@@ -109,20 +109,18 @@ button {
   padding: 0px 50px;
 }
 
-.start-page button,
-.result-page button {
+.start-page button {
   gap: 15px;
   margin-top: 20px; 
-  background-color: #4caf50;
+  background-color: #a82c2c;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.start-page button:hover,
-.result-page button:hover {
-  background-color: #45a049;
+.start-page button:hover {
+  background-color: #872525;
 }
 
 .start-page button {
@@ -135,4 +133,26 @@ button {
   width: 24px;
   height: 24px; 
   filter: invert(1);
+}
+
+.result-page .restart-button {
+  background-color: #3d8b40; 
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.result-page .restart-button:hover {
+  background-color: #2c662e; 
+}
+
+.result-page .start-button {
+  background-color: #a82c2c; 
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.result-page .start-button:hover {
+  background-color: #872525; 
 }

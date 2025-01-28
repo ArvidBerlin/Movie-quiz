@@ -8,8 +8,12 @@ const Result = ({ score, total, onRestart, onGoToStart }) => {
             <p>
                 You got {score} of {total} correct!
             </p>
-            <button onClick={onRestart}>Play again</button>
-            <button onClick={onGoToStart}>Start Page</button>
+            <button className="restart-button" onClick={onRestart}>
+                Play again
+            </button>
+            <button className="start-button" onClick={onGoToStart}>
+                Start Page
+            </button>
         </div>
     );
 };
