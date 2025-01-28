@@ -42,7 +42,7 @@ button {
   margin: 10px 0;
   padding: 10px;
   background-color: #fff;
-  border: 2px solid #007BFF;
+  border: 2px solid #0c5fb7;
   border-radius: 5px;
   cursor: pointer;
   color: #333;
@@ -50,20 +50,20 @@ button {
 }
 
 .quiz-container button:hover {
-  background-color: #007BFF;
+  background-color: #0c5fb7;
   color: #fff;
 }
 
 .quiz-container button.correct {
-  background-color: #28a745;
+  background-color: #3d8b40;
   color: #fff;
-  border-color: #28a745;
+  border-color: #3d8b40;
 }
 
 .quiz-container button.incorrect {
-  background-color: #dc3545;
+  background-color: #a82c2c;
   color: #fff;
-  border-color: #dc3545;
+  border-color: #a82c2c;
 }
 
 .quiz-container h2 {
@@ -72,22 +72,18 @@ button {
   color: #333;
 }
 
-.back-button {
-  margin-top: 15px; 
-  padding: 6px 12px; 
-  background-color: #007bff;
+.question-page .back-button {
+  background-color: #a82c2c;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   transition: background-color 0.3s;
-  width: auto; 
-  align-self: center; 
 }
 
-.back-button:hover {
-  background-color: #0056b3;
+.question-page .back-button:hover {
+  background-color: #872525;
 }
 
 .time-green {
@@ -115,7 +111,7 @@ button {
   background-color: #a82c2c;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -139,7 +135,7 @@ button {
   background-color: #3d8b40; 
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .result-page .restart-button:hover {
@@ -150,7 +146,7 @@ button {
   background-color: #a82c2c; 
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .result-page .start-button:hover {
