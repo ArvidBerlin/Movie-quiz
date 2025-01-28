@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart, currentQuestion, totalQuestions }) => {
     const [selectedOption, setSelectedOption] = useState(null);
+    const [hasAnswered, setHasAnswered] = useState(false);
+
+    // Reset hasAnswered when new question is loaded
+    useEffect(() => {
+        setHasAnswered(false);
+        setSelectedOption(null);
+    }, [question]);
 
     // If question is answered, show correct answer
     const handleClick = (option) => {
         const isCorrect = option === question.answer;
         setSelectedOption(option);
+        setHasAnswered(true);
         onAnswer(isCorrect);
     };
 
@@ -40,10 +48,13 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
                 Question {currentQuestion} out of {totalQuestions} 
             </p>
 
-            {/* Display timer */}
-            <p>
-                Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
+            {/* Display timer, hide when answered */}
+            {!hasAnswered && (
+                <p>
+                    Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
                 </p>
+            )}
+
             <button className="back-button" onClick={onGoToStart}>
                 Back to Start
             </button>
