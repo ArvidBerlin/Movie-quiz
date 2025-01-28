@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Bona Nova SC', serif;
   margin: 0;
   padding: 0;
   display: flex;
@@ -13,6 +13,11 @@ body {
   
 h1 {
   color: #333;
+}
+
+button {
+  font-family: 'Bona Nova SC', serif;
+  font-size: 16px;
 }
 
 .quiz-container {
