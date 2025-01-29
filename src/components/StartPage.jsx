@@ -8,7 +8,7 @@ const StartPage = ({ onStart }) => {
         <button onClick={onStart}>
           Start Quiz
           <img
-            src="./src/assets/clapperboard.svg"
+            src="/clapperboard.svg"
             alt="Clapperboard"
             className="button-icon"
           />
