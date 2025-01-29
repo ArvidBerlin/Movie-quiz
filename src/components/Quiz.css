@@ -1,3 +1,5 @@
+@import url('./MediaQueries.css');
+
 body {
   font-family: 'Bona Nova SC', serif;
   margin: 0;
