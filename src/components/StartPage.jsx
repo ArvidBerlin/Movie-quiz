@@ -5,7 +5,10 @@ const StartPage = ({ onStart }) => {
     <div className='start-page'>
         <h1>The Movie Quiz!</h1>
         <p>Test your knowledge in movies to see if you're a real movie buff</p>
-        <button onClick={onStart}>
+         <button onClick={() => { 
+        console.log("Start button clicked!"); // ✅ Kolla om detta syns i konsolen
+        onStart(); 
+      }}>
           Start Quiz
           <img
             src="/clapperboard.svg"

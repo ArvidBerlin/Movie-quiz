@@ -14,7 +14,7 @@ const Quiz = () => {
 
     // Load questions from JSON
     useEffect(() => {
-        fetch("./questions.json")
+        fetch("/questions.json")
         .then((response) => response.json())
         .then((data) => setQuestions(data));
     }, []);
