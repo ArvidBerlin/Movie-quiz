@@ -26,7 +26,7 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
             {/* Correct/incorrect answer feedback */}
             {question.options.map((option, index) => (
                 <button 
-                    key={index} 
+                key={`${question.question}-${index}`}
                     onClick={() => handleClick(option)}
                     className={
                         showCorrectAnswer 
