@@ -1,3 +1,4 @@
+/* For small mobile devices */
 @media screen and (max-width: 480px) {
     .quiz-container {
         width: 80% !important;
