@@ -9,11 +9,13 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
 
     // Apply focus on element when new question loads
     useEffect(() => {
-        if (questionRef.current) {
-            questionRef.current.focus();
-        }
+        setTimeout(() => {
+            if (questionRef.current) {
+                questionRef.current.focus();
+            }
 
-        document.activeElement.blur();
+            document.activeElement.blur();
+        }, 100);
     }, [question]);
 
     // Reset hasAnswered when new question is loaded
