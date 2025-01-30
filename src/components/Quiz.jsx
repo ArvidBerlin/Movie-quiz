@@ -66,6 +66,7 @@ const Quiz = () => {
         setTimeLeft(15);
     }
 
+    // Show player feedback and move to next question
     const handleOnAnswer = (isCorrect) => {
         setShowCorrectAnswer(true);
         setTimeout(() => {
