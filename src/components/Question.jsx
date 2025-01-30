@@ -32,7 +32,7 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
         // Show question and answer options
         <div className="question-page">
             {/* Connect focus-reference to h2 element */}
-            <h2 ref={questionRef} tabIndex="-1">{question.question}</h2> 
+            <h2 ref={questionRef} tabIndex="0">{question.question}</h2> 
             
             {/* Correct/incorrect answer feedback */}
             {question.options.map((option, index) => (
