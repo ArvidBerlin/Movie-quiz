@@ -12,6 +12,8 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
         if (questionRef.current) {
             questionRef.current.focus();
         }
+
+        document.activeElement.blur();
     }, [question]);
 
     // Reset hasAnswered when new question is loaded
