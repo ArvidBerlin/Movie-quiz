@@ -66,6 +66,14 @@ const Quiz = () => {
         setTimeLeft(15);
     }
 
+    const handleOnAnswer = (isCorrect) => {
+        setShowCorrectAnswer(true);
+        setTimeout(() => {
+            setShowCorrectAnswer(false);
+            nextQuestion(isCorrect);
+        }, 1500);
+    }
+
     // Load questions
     return (
         <div className="quiz-container">
@@ -81,13 +89,7 @@ const Quiz = () => {
             {hasStarted && !isFinished && (
                 <Question
                     question={questions[currentQuestionIndex]}
-                    onAnswer={(isCorrect) => {
-                        setShowCorrectAnswer(true);
-                        setTimeout(() => {
-                            setShowCorrectAnswer(false);
-                            nextQuestion(isCorrect);
-                        }, 1500);
-                    }}
+                    onAnswer={handleOnAnswer}
                     timeLeft={timeLeft}
                     showCorrectAnswer={showCorrectAnswer}
                     onGoToStart={goToStartPage}

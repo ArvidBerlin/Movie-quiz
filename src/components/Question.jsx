@@ -4,6 +4,10 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
     const [selectedOption, setSelectedOption] = useState(null);
     const [hasAnswered, setHasAnswered] = useState(false);
 
+    useEffect(() => {
+        // TODO: kör en .focus() eller .click() på något element, använd useRef om du vill som skapar referens till vDOM element
+    }, []);
+
     // Reset hasAnswered when new question is loaded
     useEffect(() => {
         setHasAnswered(false);
@@ -48,16 +52,19 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
                 Question {currentQuestion} out of {totalQuestions} 
             </p>
 
-            {/* Display timer, hide when answered */}
+            {/* Display timer, hide when question is answered */}
             {!hasAnswered && (
                 <p>
                     Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
                 </p>
             )}
 
-            <button className="back-button" onClick={onGoToStart}>
-                Back to Start
-            </button>
+            {/* Hide back to start button when question is answered */}
+            {!hasAnswered && (
+                <button className="back-button" onClick={onGoToStart}>
+                    Back to Start
+                </button>
+            )}
         </div>
     );
 };

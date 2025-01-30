@@ -33,6 +33,7 @@
 
     .quiz-container {
         width: 70% !important;
+        width: 100vw
     }
 
     .quiz-container h1 {

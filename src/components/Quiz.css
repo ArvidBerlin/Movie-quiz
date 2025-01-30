@@ -81,7 +81,7 @@ button {
 }
 
 .question-page .back-button {
-  background-color: #0c5fb7;
+  background-color: #a82c2c;
   color: white;
   border: none;
   border-radius: 5px;
@@ -91,7 +91,7 @@ button {
 }
 
 .question-page .back-button:hover {
-  background-color: #0c427c;
+  background-color: #872525;
 }
 
 .time-green {
