@@ -7,8 +7,6 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
     // Reference for focus element
     const questionRef = useRef(null);
 
-    const dummyDivRef = useRef(null);
-
     // Apply focus on element when new question loads
     useEffect(() => {
         setTimeout(() => {
@@ -16,9 +14,7 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
                 questionRef.current.focus();
             }
 
-            if (dummyDivRef.current) {
-                dummyDivRef.current.click();
-            }
+            document.activeElement.blur();
         }, 100);
     }, [question]);
 
@@ -37,59 +33,50 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
     };
 
     return (
-        <>
-            {/* Osynlig div som "klickas" på för att ta bort oönskat fokus */}
-            <div
-                ref={dummyDivRef}
-                style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
-                tabIndex="-1">
-            </div>
+        // Show question and answer options
+        <div className="question-page">
+            {/* Connect focus-reference to h2 element */}
+            <h2 ref={questionRef} tabIndex="0">{question.question}</h2> 
+            
+            {/* Correct/incorrect answer feedback */}
+            {question.options.map((option, index) => (
+                <button 
+                key={`${question.question}-${index}`}
+                    onClick={() => handleClick(option)}
+                    className={
+                        showCorrectAnswer 
+                        ? option === question.answer
+                            ? "correct"
+                            : selectedOption === option 
+                            ? "incorrect" 
+                        : "" 
+                        : ""
+                    }
+                    disabled={showCorrectAnswer} // Disable buttons after answer
+                >
+                    {option}
+                </button>
+            ))}
 
-            // Show question and answer options
-            <div className="question-page">
-                {/* Connect focus-reference to h2 element */}
-                <h2 ref={questionRef} tabIndex="0">{question.question}</h2> 
-                
-                {/* Correct/incorrect answer feedback */}
-                {question.options.map((option, index) => (
-                    <button 
-                    key={`${question.question}-${index}`}
-                        onClick={() => handleClick(option)}
-                        className={
-                            showCorrectAnswer 
-                            ? option === question.answer
-                                ? "correct"
-                                : selectedOption === option 
-                                ? "incorrect" 
-                            : "" 
-                            : ""
-                        }
-                        disabled={showCorrectAnswer} // Disable buttons after answer
-                    >
-                        {option}
-                    </button>
-                ))}
+            {/* Display current question number and total question number */}
+            <p className="question-tracker"> 
+                Question {currentQuestion} out of {totalQuestions} 
+            </p>
 
-                {/* Display current question number and total question number */}
-                <p className="question-tracker"> 
-                    Question {currentQuestion} out of {totalQuestions} 
+            {/* Display timer, hide when question is answered */}
+            {!hasAnswered && (
+                <p>
+                    Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
                 </p>
+            )}
 
-                {/* Display timer, hide when question is answered */}
-                {!hasAnswered && (
-                    <p>
-                        Time remaining: <span className={timeLeft >= 6 ? "time-green" : "time-red"}>{timeLeft} seconds</span> 
-                    </p>
-                )}
-
-                {/* Hide back to start button when question is answered */}
-                {!hasAnswered && (
-                    <button className="back-button" onClick={onGoToStart}>
-                        Back to Start
-                    </button>
-                )}
-            </div>
-        </>
+            {/* Hide back to start button when question is answered */}
+            {!hasAnswered && (
+                <button className="back-button" onClick={onGoToStart}>
+                    Back to Start
+                </button>
+            )}
+        </div>
     );
 };
 
