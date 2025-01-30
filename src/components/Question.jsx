@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart, currentQuestion, totalQuestions }) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [hasAnswered, setHasAnswered] = useState(false);
 
+    // Reference for focus element
+    const questionRef = useRef(null);
+
+    // Apply focus on element when new question loads
     useEffect(() => {
-        // TODO: kör en .focus() eller .click() på något element, använd useRef om du vill som skapar referens till vDOM element
-    }, []);
+        if (questionRef.current) {
+            questionRef.current.focus();
+        }
+    }, [question]);
 
     // Reset hasAnswered when new question is loaded
     useEffect(() => {
@@ -25,7 +31,8 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
     return (
         // Show question and answer options
         <div className="question-page">
-            <h2>{question.question}</h2> 
+            {/* Connect focus-reference to h2 element */}
+            <h2 ref={questionRef} tabIndex="-1">{question.question}</h2> 
             
             {/* Correct/incorrect answer feedback */}
             {question.options.map((option, index) => (
