@@ -43,6 +43,7 @@ const Question = ({ question, onAnswer, timeLeft, showCorrectAnswer, onGoToStart
                 <button 
                 key={`${question.question}-${index}`}
                     onClick={() => handleClick(option)}
+                    onFocus={(e) => e.preventDefault()} // Stop browser from focusing button
                     className={
                         showCorrectAnswer 
                         ? option === question.answer
